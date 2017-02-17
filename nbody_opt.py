@@ -51,7 +51,7 @@ body1_body2_keys = BODIES.keys()
 body1_body2 = list(combinations(body1_body2_keys, 2))    
 
 
-def advance(dt,iterations):
+def advance(dt,iterations,BODIES):
     '''
         advance the system one timestep
     '''
@@ -78,7 +78,7 @@ def advance(dt,iterations):
             r[2] += dt * vz
 
     
-def report_energy(e=0.0):
+def report_energy(e=0.0,BODIES):
     '''
         compute the energy and return it so that it can be printed
     '''
@@ -121,7 +121,7 @@ def nbody(loops, reference, iterations):
     v[2] = pz / m
 
     for _ in range(loops):
-        advance(0.01,iterations)
+        advance(0.01,iterations,BODIES)
         print(report_energy())
 
 
