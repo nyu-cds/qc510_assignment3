@@ -78,9 +78,11 @@ def advance(dt,iterations,BODIES):
             r[2] += dt * vz
 
     
-def report_energy(e=0.0,BODIES):
+def report_energy(BODIES,e=0.0):
     '''
-        compute the energy and return it so that it can be printed
+        compute the energy and return it so that it can be printed and reported 
+
+        return e as the energy
     '''
 
     for(body1,body2) in body1_body2:
@@ -122,7 +124,7 @@ def nbody(loops, reference, iterations):
 
     for _ in range(loops):
         advance(0.01,iterations,BODIES)
-        print(report_energy())
+        print(report_energy(BODIES))
 
 
 if __name__ == '__main__':
