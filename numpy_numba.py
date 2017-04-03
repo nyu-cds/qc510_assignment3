@@ -47,7 +47,7 @@ BODIES = np.array([
                 [5.15138902046611451e-05 * SOLAR_MASS, 0.0, 0.0])])
 
 keys = np.array([0, 1, 2, 3, 4])
-BODIES_name = {'sun': 0, 'jupiter': 1, 'saturn': 2, 'uranus': 3, 'neptune': 4}
+names = {'sun': 0, 'jupiter': 1, 'saturn': 2, 'uranus': 3, 'neptune': 4}
 
 
 @vectorize([float64(float64, float64)])
@@ -88,7 +88,7 @@ def advance(BODIES, keys, BODY1_BODY2, iterations, dt):
             r[2] += dt * vz
 
 
-@jit('float64(float64[:,:,:], int64[:], int64[:,:], float64)', nopython=True)
+@jit('float64(float64[:,:,:], int64[:], int64[:,:], float64)')
 def report_energy(BODIES, keys, BODY1_BODY2, e=0.0):
 
     for index in range(len(BODY1_BODY2)):
@@ -141,4 +141,4 @@ def nbody(loops, reference, iterations):
 
 if __name__ == '__main__':
 
-    print(timeit.timeit("nbody(100, BODIES_name['sun'], 20000)", setup="from __main__ import nbody, BODIES_name", number=1))
+    print(timeit.timeit("nbody(100, names['sun'], 20000)", setup="from __main__ import nbody, names", number=1))
