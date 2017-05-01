@@ -40,7 +40,6 @@ def compute_mandel(min_x, max_x, min_y, max_y, image, iters):
 
     partition_x=math.ceil(width/thread_x)
     partition_y=math.ceil(height/thread_y)
-    #position of starting
 
 
     x_position = cuda.grid(2)[0]
